@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `domains` (
   `domain_name` varchar(255) NOT NULL,
   `host` int(16) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `domain` (`domain_name`)
+  KEY `domain` (`domain_name`),
+  CONSTRAINT `domains_ibfk_1` FOREIGN KEY (`host`) REFERENCES `hosts` (`id_host`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `hosts` (
