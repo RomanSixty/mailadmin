@@ -1,0 +1,9 @@
+<?php
+$dba = new dba;
+$dba->appname = "ispmail";
+$dba->server = "localhost";
+$dba->database = "";
+$dba->user = "";
+$dba->password = "";
+$dba->connect();
+?>
