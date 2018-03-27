@@ -5,18 +5,17 @@ require_once("../_conf.dba.inc.php");
 require_once("../_static.session.inc.php");
 validate_session();
 
-if ( $_SERVER [ 'REQUEST_METHOD' ] == 'POST' )
-{
-	$query = "INSERT INTO hosts (host_name,passwd,notes)
-	          VALUES ('".mysql_real_escape_string($_REQUEST['host_name'])."','".
-	                     md5($_REQUEST['passwd'])."','".
-	                     mysql_real_escape_string($_REQUEST['notes'])."')";
-	$dba->query($query);
-	
-	$_SESSION['flash'] = "New Entry Nr. ".$dba->insert_id()." created.";
-	header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/list.php");
-	
-	exit ( 0 );
+if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
+    $query = "INSERT INTO hosts (host_name,passwd,notes)
+	          VALUES ('".mysqli_real_escape_string($dba->link_id, $_REQUEST['host_name'])."','".
+                         md5($_REQUEST['passwd'])."','".
+                         mysqli_real_escape_string($dba->link_id, $_REQUEST['notes'])."')";
+    $dba->query($query);
+    
+    $_SESSION['flash'] = "New Entry Nr. ".$dba->insert_id()." created.";
+    header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/list.php");
+    
+    exit(0);
 }
 
 ?>

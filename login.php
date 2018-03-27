@@ -3,23 +3,20 @@ include_once("_class.dba.inc.php");
 include_once("_conf.dba.inc.php");
 include_once("_static.session.inc.php");
 
-if ( $_SERVER [ 'REQUEST_METHOD' ] == 'POST' )
-{
-	$res = $dba -> query ( 'SELECT id_host, admin FROM hosts
-							WHERE host_name="' . mysql_real_escape_string ( $_POST [ 'name' ] ) . '"
-							AND passwd="' . md5 ( $_POST [ 'passwd' ] ) . '"' );
-	
-	if ( $dba -> num_rows() == 1 )
-	{
-		$row = $dba -> fetch_assoc ( $res );
+if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
+    $res = $dba -> query('SELECT id_host, admin FROM hosts
+							WHERE host_name="' . mysqli_real_escape_string($dba->link_id, $_POST [ 'name' ]) . '"
+							AND passwd="' . md5($_POST [ 'passwd' ]) . '"');
+    
+    if ($dba -> num_rows() == 1) {
+        $row = $dba -> fetch_assoc($res);
 
-		$_SESSION [ 'user'  ] = $row [ 'id_host' ];
-		$_SESSION [ 'admin' ] = ( $row [ 'admin' ] == 'yes' ) ? true : false;
-		
-		header ( 'Location: http://' . $_SERVER [ 'HTTP_HOST' ] .
-	            rtrim ( dirname ( $_SERVER [ 'PHP_SELF' ] ), '/\\' ) . '/index.php' );
-	}
-
+        $_SESSION [ 'user'  ] = $row [ 'id_host' ];
+        $_SESSION [ 'admin' ] = ( $row [ 'admin' ] == 'yes' ) ? true : false;
+        
+        header('Location: http://' . $_SERVER [ 'HTTP_HOST' ] .
+                rtrim(dirname($_SERVER [ 'PHP_SELF' ]), '/\\') . '/index.php');
+    }
 }
 
 ?>
@@ -32,7 +29,7 @@ if ( $_SERVER [ 'REQUEST_METHOD' ] == 'POST' )
 <body>
 <form action="login.php" method="POST" target="_top">
 <table border="0">
-<input type="hidden" value="<?= $row['id'] ?>" name="id">
+<input type="hidden" value="<?= @$row['id'] ?>" name="id">
 <tr>
 	<td>name</td>
 	<td><input type="text" size="50" maxlength="255" value="" name="name"></td>

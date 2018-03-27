@@ -8,4 +8,3 @@ $_id   = 'id';
 $_name = 'domain_name';
 
 require_once("../_static.delete.inc.php");
-?>

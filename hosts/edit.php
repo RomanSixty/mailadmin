@@ -5,14 +5,13 @@ require_once("../_conf.dba.inc.php");
 require_once("../_static.session.inc.php");
 validate_session();
 
-if ( $_SERVER [ 'REQUEST_METHOD' ] == 'POST' )
-{
-	$query = "UPDATE hosts SET host_name='".$_REQUEST['host_name']."',notes='".$_REQUEST['notes']."' WHERE id_host='".mysql_real_escape_string($_REQUEST['id_host'])."'";
-	$dba->query($query);
-	
-	$_SESSION['flash'] = "Entry Nr. ".$_POST['id_host']." updated.";
-	header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/list.php");
-	exit ( 0 );
+if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
+    $query = "UPDATE hosts SET host_name='".$_REQUEST['host_name']."',notes='".$_REQUEST['notes']."' WHERE id_host='".mysqli_real_escape_string($dba->link_id, $_REQUEST['id_host'])."'";
+    $dba->query($query);
+    
+    $_SESSION['flash'] = "Entry Nr. ".$_POST['id_host']." updated.";
+    header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/list.php");
+    exit(0);
 }
 
 $query = "SELECT * FROM hosts WHERE id_host='".$_REQUEST['id_host']."' LIMIT 1";

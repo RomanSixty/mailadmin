@@ -8,4 +8,3 @@ $_id   = 'id_host';
 $_name = 'host_name';
 
 require_once("../_static.delete.inc.php");
-?>

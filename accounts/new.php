@@ -5,44 +5,44 @@ require_once("../_conf.dba.inc.php");
 require_once("../_static.session.inc.php");
 validate_session();
 
-function vcrypt($clear) {
-	// generate a password for exim and courier
-	//$salt = join '', ('.','/', 0..9,'A'..'Z', 'a'..'z')[rand 64, rand 64];
-	//$vcrypt = crypt($clear, $salt)."\n";
-	//We need a Standard DES-Hash so we need to set a 2-Char salt
-	$salt = "he";
-	$vcrypt = crypt($clear,$salt);
-	return $vcrypt;
+function vcrypt($clear)
+{
+    // generate a password for exim and courier
+    //$salt = join '', ('.','/', 0..9,'A'..'Z', 'a'..'z')[rand 64, rand 64];
+    //$vcrypt = crypt($clear, $salt)."\n";
+    //We need a Standard DES-Hash so we need to set a 2-Char salt
+    $salt = "he";
+    $vcrypt = crypt($clear, $salt);
+    return $vcrypt;
 }
 
-if ( $_SERVER [ 'REQUEST_METHOD' ] == 'POST' )
-{
-	$pwcrypt = vcrypt($_POST['pwclear']);
+if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
+    $pwcrypt = vcrypt($_POST['pwclear']);
 
-	if(!isset($_POST['is_away'])) {
-		$_POST['is_away'] = 0;
-	}
-	if(!isset($_POST['spam_check'])) {
-		$_POST['spam_check'] = "yes";
-	}
-	if(!isset($_POST['spam_purge'])) {
-		$_POST['spam_purge'] = "no";
-	}
-	if(!isset($_POST['virus_check'])) {
-		$_POST['virus_check'] = "no";
-	}
-	
-	$query = "INSERT INTO accounts (local_part,domain,forward,cc,name,pwclear,pwcrypt,is_away,away_subject,away_text,spam_check,spam_purge,virus_check,is_enabled,created_at,updated_at)
-                 VALUES ('".mysql_real_escape_string($_REQUEST['local_part'])."','".mysql_real_escape_string($_REQUEST['domain'])."','".mysql_real_escape_string($_REQUEST['forward'])."','".mysql_real_escape_string($_REQUEST['cc'])
-                       ."','".mysql_real_escape_string($_REQUEST['name'])."','".mysql_real_escape_string($_REQUEST['pwclear'])."','".mysql_real_escape_string($pwcrypt)."','".mysql_real_escape_string($_REQUEST['is_away'])
-                       ."','".mysql_real_escape_string($_REQUEST['away_subject'])."','".mysql_real_escape_string($_REQUEST['away_text'])."','".mysql_real_escape_string($_REQUEST['spam_check'])."','".mysql_real_escape_string($_REQUEST['spam_purge'])
-                       ."','".mysql_real_escape_string($_REQUEST['virus_check'])."','".mysql_real_escape_string($_REQUEST['is_enabled'])."','".time()."','".time()."')";
-	$dba->query($query);
-	
-	$_SESSION['flash'] = "New Entry Nr. ".$dba->insert_id()." created.";
-	header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/list.php");
-	
-	exit(0);
+    if (!isset($_POST['is_away'])) {
+        $_POST['is_away'] = 0;
+    }
+    if (!isset($_POST['spam_check'])) {
+        $_POST['spam_check'] = "yes";
+    }
+    if (!isset($_POST['spam_purge'])) {
+        $_POST['spam_purge'] = "no";
+    }
+    if (!isset($_POST['virus_check'])) {
+        $_POST['virus_check'] = "no";
+    }
+    
+    $query = "INSERT INTO accounts (local_part,domain,forward,cc,name,pwclear,pwcrypt,is_away,away_subject,away_text,spam_check,spam_purge,virus_check,is_enabled,created_at,updated_at)
+                 VALUES ('".mysqli_real_escape_string($dba->link_id, $_REQUEST['local_part'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['domain'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['forward'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['cc'])
+                       ."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['name'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['pwclear'])."','".mysqli_real_escape_string($dba->link_id, $pwcrypt)."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['is_away'])
+                       ."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['away_subject'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['away_text'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['spam_check'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['spam_purge'])
+                       ."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['virus_check'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['is_enabled'])."','".time()."','".time()."')";
+    $dba->query($query);
+    
+    $_SESSION['flash'] = "New Entry Nr. ".$dba->insert_id()." created.";
+    header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/list.php");
+    
+    exit(0);
 }
 
 ?>
@@ -60,23 +60,24 @@ if ( $_SERVER [ 'REQUEST_METHOD' ] == 'POST' )
 	<td><input type="text" size="50" maxlength="255" value="" name="local_part"> @
 		<select name="domain"><option></option>
 <?php
-if ( $_SESSION [ 'admin' ] )
-	$query = "SELECT * FROM domains ORDER BY domain_name ASC";
-else
-	$query = "SELECT * FROM domains LEFT JOIN hosts h ON host=id_host WHERE id_host=" . $_SESSION [ 'user' ] . " ORDER BY domain_name ASC";
+if ($_SESSION [ 'admin' ]) {
+    $query = "SELECT * FROM domains ORDER BY domain_name ASC";
+} else {
+    $query = "SELECT * FROM domains LEFT JOIN hosts h ON host=id_host WHERE id_host=" . $_SESSION [ 'user' ] . " ORDER BY domain_name ASC";
+}
 $results = $dba->query($query);
-while($row = $dba->fetch_assoc($results)) {
-	if($row['id'] == $_SESSION [ 'domain_filter' ] ) {
-		$selected = ' selected';
-	} else {
-		$selected = '';
-	}
-	echo("<option value='".$row['id']."'$selected>".$row['domain_name']."</option>
+while ($row = $dba->fetch_assoc($results)) {
+    if ($row['id'] == $_SESSION [ 'domain_filter' ]) {
+        $selected = ' selected';
+    } else {
+        $selected = '';
+    }
+    echo("<option value='".$row['id']."'$selected>".$row['domain_name']."</option>
 ");
 }
 ?>
 </select>
-<?php if ( $_SESSION [ 'admin' ] ) { ?>
+<?php if ($_SESSION [ 'admin' ]) { ?>
 <a href="../domains/new.php">new domain</a>
 <?php } ?>
 </td>
