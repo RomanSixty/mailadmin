@@ -6,7 +6,7 @@ require_once("../_static.session.inc.php");
 validate_session();
 
 if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
-    $query = "UPDATE domains SET domain_name='".$_REQUEST['domain_name']."',host='".$_REQUEST['host']."' WHERE id='".mysql_real_escape_string($_REQUEST['id'])."'";
+    $query = "UPDATE domains SET domain_name='".$_REQUEST['domain_name']."',host='".$_REQUEST['host']."' WHERE id='".mysqli_real_escape_string($dba->link_id, $_REQUEST['id'])."'";
     $dba->query($query);
     
     $_SESSION['flash'] = "Entry Nr. ".$_POST['id']." updated.";

@@ -7,9 +7,9 @@ validate_session();
 
 if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
     $query = "INSERT INTO hosts (host_name,passwd,notes)
-	          VALUES ('".mysql_real_escape_string($_REQUEST['host_name'])."','".
+	          VALUES ('".mysqli_real_escape_string($dba->link_id, $_REQUEST['host_name'])."','".
                          md5($_REQUEST['passwd'])."','".
-                         mysql_real_escape_string($_REQUEST['notes'])."')";
+                         mysqli_real_escape_string($dba->link_id, $_REQUEST['notes'])."')";
     $dba->query($query);
     
     $_SESSION['flash'] = "New Entry Nr. ".$dba->insert_id()." created.";

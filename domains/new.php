@@ -6,7 +6,7 @@ require_once("../_static.session.inc.php");
 validate_session();
 
 if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
-    $query = "INSERT INTO domains (domain_name,host) VALUES ('".mysql_real_escape_string($_REQUEST['domain_name'])."','".mysql_real_escape_string($_REQUEST['host'])."')";
+    $query = "INSERT INTO domains (domain_name,host) VALUES ('".mysqli_real_escape_string($dba->link_id, $_REQUEST['domain_name'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['host'])."')";
     $dba->query($query);
     
     $_SESSION['flash'] = "New Entry Nr. ".$dba->insert_id()." created.";

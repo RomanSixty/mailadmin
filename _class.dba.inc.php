@@ -17,25 +17,22 @@ class dba
     function connect()
     {
         if (0 == $this->link_id) {
-            $this->link_id = @mysql_connect($this->server, $this->user, $this->password);
+            $this->link_id = @mysqli_connect($this->server, $this->user, $this->password, $this->database);
             if (!$this->link_id) {
                 $this->print_error("Link-ID == false, connect failed");
-            }
-            if ($this->database != "") {
-                $this->select_db($this->database);
             }
         }
     }
     // $dba->geterrdesc(); - return the mysql-error
     function geterrdesc()
     {
-            $this->error = mysql_error();
+            $this->error = mysqli_error($this->link_id );
             return $this->error;
     }
     // $dba->geterrno(); - return the mysql-error number
     function geterrno()
     {
-            $this->errno = mysql_errno();
+            $this->errno = mysqli_errno($this->link_id );
             return $this->errno;
     }
     // $dba->select_db( $database); - select a database to work with
@@ -44,17 +41,17 @@ class dba
         if ($database!="") {
             $this->database = $database;
         }
-        if (!@mysql_select_db($this->database, $this->link_id)) {
+        if (!@mysqli_select_db($this->link_id, $this->database)) {
             $this->print_error("Can not use database ".$this->database);
         }
     }
     // $dba->query( $query_string); - executes your query
     function query($query_string)
     {
-            $this->query_id = mysql_query($query_string, $this->link_id);
+            $this->query_id = mysqli_query($this->link_id, $query_string);
         if (!$this->query_id) {
             $this->print_error("Invalid SQL-Query: ".$query_string);
-            @mysql_query("ROLLBACK", $this->link_id);
+            @mysqli_query($this->link_id, "ROLLBACK");
             die();
         }
             return $this->query_id;
@@ -65,7 +62,7 @@ class dba
         if ($query_id != -1) {
             $this->query_id=$query_id;
         }
-            $this->record = mysql_fetch_assoc($this->query_id);
+            $this->record = mysqli_fetch_assoc( $this->query_id);
             return $this->record;
     }
     // $dba->free_result( $query_id); - ???
@@ -74,14 +71,14 @@ class dba
         if ($query_id != -1) {
             $this->query_id = $query_id;
         }
-            return @mysql_free_result($this->query_id);
+            return @mysqli_free_result($this->link_id, $this->query_id);
     }
     // $dba->query_first( $query_string); - ???
     function query_first($query_string)
     {
             $this->query($query_string);
             $returnarray=$this->fetch_assoc($this->query_id);
-            $this->free_result($this->query_id);
+            #$this->free_result($this->query_id);
             return $returnarray;
     }
     // $dba->num_rows( $query_id); - returns the number of rows in the query
@@ -90,12 +87,12 @@ class dba
         if ($query_id != -1) {
             $this->query_id = $query_id;
         }
-            return mysql_num_rows($this->query_id);
+            return mysqli_num_rows($this->query_id);
     }
     // $dba->insert_id(); - Liefert die ID einer vorherigen INSERT-Operation
     function insert_id()
     {
-            return mysql_insert_id($this->link_id);
+            return mysqli_insert_id($this->link_id);
     }
     // $dba->GetPrimaryCol( $table);
     function GetPrimaryCol($table)
@@ -108,8 +105,8 @@ class dba
     // $dba->print_error( $msg); - prints an error
     function print_error($msg)
     {
-            $this->errdesc = mysql_error();
-            $this->errno = mysql_errno();
+            $this->errdesc = mysqli_error($this->link_id );
+            $this->errno = mysqli_errno($this->link_id );
 
             $message = "<table width=\"50%\"><tr><td bgcolor=\"red\">\n";
             $message .= "Database error: $msg\n<br>";

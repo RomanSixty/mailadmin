@@ -1,6 +1,6 @@
 <?php
 
-$id = mysql_real_escape_string($_REQUEST [ $_id ]);
+$id = mysqli_real_escape_string($dba->link_id, $_REQUEST [ $_id ]);
 
 if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
     $dba -> query('DELETE FROM ' . $realm . ' WHERE ' . $_id . '=' . $id . ' LIMIT 1');

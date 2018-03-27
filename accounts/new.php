@@ -33,10 +33,10 @@ if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
     }
     
     $query = "INSERT INTO accounts (local_part,domain,forward,cc,name,pwclear,pwcrypt,is_away,away_subject,away_text,spam_check,spam_purge,virus_check,is_enabled,created_at,updated_at)
-                 VALUES ('".mysql_real_escape_string($_REQUEST['local_part'])."','".mysql_real_escape_string($_REQUEST['domain'])."','".mysql_real_escape_string($_REQUEST['forward'])."','".mysql_real_escape_string($_REQUEST['cc'])
-                       ."','".mysql_real_escape_string($_REQUEST['name'])."','".mysql_real_escape_string($_REQUEST['pwclear'])."','".mysql_real_escape_string($pwcrypt)."','".mysql_real_escape_string($_REQUEST['is_away'])
-                       ."','".mysql_real_escape_string($_REQUEST['away_subject'])."','".mysql_real_escape_string($_REQUEST['away_text'])."','".mysql_real_escape_string($_REQUEST['spam_check'])."','".mysql_real_escape_string($_REQUEST['spam_purge'])
-                       ."','".mysql_real_escape_string($_REQUEST['virus_check'])."','".mysql_real_escape_string($_REQUEST['is_enabled'])."','".time()."','".time()."')";
+                 VALUES ('".mysqli_real_escape_string($dba->link_id, $_REQUEST['local_part'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['domain'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['forward'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['cc'])
+                       ."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['name'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['pwclear'])."','".mysqli_real_escape_string($dba->link_id, $pwcrypt)."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['is_away'])
+                       ."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['away_subject'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['away_text'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['spam_check'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['spam_purge'])
+                       ."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['virus_check'])."','".mysqli_real_escape_string($dba->link_id, $_REQUEST['is_enabled'])."','".time()."','".time()."')";
     $dba->query($query);
     
     $_SESSION['flash'] = "New Entry Nr. ".$dba->insert_id()." created.";
