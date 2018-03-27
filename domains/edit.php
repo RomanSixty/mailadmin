@@ -5,15 +5,14 @@ require_once("../_conf.dba.inc.php");
 require_once("../_static.session.inc.php");
 validate_session();
 
-if ( $_SERVER [ 'REQUEST_METHOD' ] == 'POST' )
-{
-	$query = "UPDATE domains SET domain_name='".$_REQUEST['domain_name']."',host='".$_REQUEST['host']."' WHERE id='".mysql_real_escape_string($_REQUEST['id'])."'";
-	$dba->query($query);
-	
-	$_SESSION['flash'] = "Entry Nr. ".$_POST['id']." updated.";
-	header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/list.php");
-	
-	exit ( 0 );
+if ($_SERVER [ 'REQUEST_METHOD' ] == 'POST') {
+    $query = "UPDATE domains SET domain_name='".$_REQUEST['domain_name']."',host='".$_REQUEST['host']."' WHERE id='".mysql_real_escape_string($_REQUEST['id'])."'";
+    $dba->query($query);
+    
+    $_SESSION['flash'] = "Entry Nr. ".$_POST['id']." updated.";
+    header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/list.php");
+    
+    exit(0);
 }
 
 $query = "SELECT * FROM domains WHERE id='".$_REQUEST['id']."' LIMIT 1";
@@ -42,13 +41,13 @@ $row = $dba->fetch_assoc($result);
 <?php
 $query = "SELECT * FROM hosts ORDER BY host_name";
 $results = $dba->query($query);
-while($rowi = $dba->fetch_assoc($results)) {
-	if($rowi['id_host'] == $row['host']) {
-		$selected = ' selected';
-	} else {
-		$selected = '';
-	}
-	echo("<option value='".$rowi['id_host']."'$selected>".$rowi['host_name']."</option>");
+while ($rowi = $dba->fetch_assoc($results)) {
+    if ($rowi['id_host'] == $row['host']) {
+        $selected = ' selected';
+    } else {
+        $selected = '';
+    }
+    echo("<option value='".$rowi['id_host']."'$selected>".$rowi['host_name']."</option>");
 }
 ?>
 </select>

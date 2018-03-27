@@ -8,4 +8,3 @@ $_id   = 'id_user';
 $_name = 'local_part';
 
 require_once("../_static.delete.inc.php");
-?>

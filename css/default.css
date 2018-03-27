@@ -1,82 +1,82 @@
-BODY						{ FONT: 9pt Arial; }
-P							{ FONT: 9pt Arial; }
-BODY.nav					{ FONT: 9pt Arial; background-color:#CCCCCC; margin-left:2px; margin-right:2px; margin-top:0px; margin-bottom:1px}
-A							{ font-family: Arial, sans-serif; color:#0000A0; text-decoration: none; }
-A:active					{ font-family: Arial, sans-serif; color:#0000A0; text-decoration: none; }
-A:visited					{ font-family: Arial, sans-serif; color:#0000A0; text-decoration: none; }
-A:hover						{ font-family: Arial, sans-serif; color:#0000A0; text-decoration: underline; display: compact; background-color:#eeeeee; }
-.nav 						{ left:1px; line-height:100%; font-family:Arial; font-size:14px; font-weight:bold; font-stretch:normal; color:#000000; } 
-.nav_small					{ position:relative; left:8px; line-height:95%; font-family:Arial,Tahoma,Verdana; font-size:11px; font-weight:lighter; font-stretch:normal; color:#000000; }
-.nav_tiny					{ position:relative; left:1px; line-height:95%; font-family:Arial,Tahoma,Verdana; font-size:9px; font-weight:lighter; font-stretch:normal; color:#000000; }
-TD							{ font-family: Arial, Sans-Serif; font-size:9pt; color:#000000; }
-TD > B > FONT[color=blue]	{ color:#0000A0; }
-TD.access					{ background-color:#99FF99; }
-TD.noaccess					{ background-color:#FF9999; }
-TD.away						{ background-color:#ffd800; }
-TD.red						{ background-color:#CC3823; }
-TD.red_hidden				{ background-color:#CC3823; color:#CC3823; }
-TD.light_red				{ background-color:#ff9f9f; }
-TD.green					{ background-color:#4dea33; }
-TD.light_grey				{ background-color:#CCCCCC; }
-TD.yellow					{ background-color:#fff223; }
-TD.yellow_hidden			{ background-color:#fff223; color:#fff223; }
-TD.light_yellow				{ background-color:#fffaaa; }
-TD.grey						{ background-color:#DDDDDD; color:#000000}
-TD.hidden					{ background-color:#FFFFFF; color:#FFFFFF; }
-TH							{ background-color:#c0c0c0; font-family: Arial, Sans-Serif; font-size:9pt; color:#0000A0; }
+BODY                        { FONT: 9pt Arial; }
+P                           { FONT: 9pt Arial; }
+BODY.nav                    { FONT: 9pt Arial; background-color:#CCCCCC; margin-left:2px; margin-right:2px; margin-top:0px; margin-bottom:1px}
+A                           { font-family: Arial, sans-serif; color:#0000A0; text-decoration: none; }
+A:active                    { font-family: Arial, sans-serif; color:#0000A0; text-decoration: none; }
+A:visited                   { font-family: Arial, sans-serif; color:#0000A0; text-decoration: none; }
+A:hover                         { font-family: Arial, sans-serif; color:#0000A0; text-decoration: underline; display: compact; background-color:#eeeeee; }
+.nav                        { left:1px; line-height:100%; font-family:Arial; font-size:14px; font-weight:bold; font-stretch:normal; color:#000000; }
+.nav_small                  { position:relative; left:8px; line-height:95%; font-family:Arial,Tahoma,Verdana; font-size:11px; font-weight:lighter; font-stretch:normal; color:#000000; }
+.nav_tiny                   { position:relative; left:1px; line-height:95%; font-family:Arial,Tahoma,Verdana; font-size:9px; font-weight:lighter; font-stretch:normal; color:#000000; }
+TD                          { font-family: Arial, Sans-Serif; font-size:9pt; color:#000000; }
+TD > B > FONT[color=blue]   { color:#0000A0; }
+TD.access                   { background-color:#99FF99; }
+TD.noaccess                     { background-color:#FF9999; }
+TD.away                         { background-color:#ffd800; }
+TD.red                      { background-color:#CC3823; }
+TD.red_hidden               { background-color:#CC3823; color:#CC3823; }
+TD.light_red                { background-color:#ff9f9f; }
+TD.green                    { background-color:#4dea33; }
+TD.light_grey               { background-color:#CCCCCC; }
+TD.yellow                   { background-color:#fff223; }
+TD.yellow_hidden            { background-color:#fff223; color:#fff223; }
+TD.light_yellow                 { background-color:#fffaaa; }
+TD.grey                         { background-color:#DDDDDD; color:#000000}
+TD.hidden                   { background-color:#FFFFFF; color:#FFFFFF; }
+TH                          { background-color:#c0c0c0; font-family: Arial, Sans-Serif; font-size:9pt; color:#0000A0; }
 
-FONT.owner					{ color:#006633; }
-FONT.noowner				{ color:#000000; }
-TABLE.syslog				{ FONT: 8pt Arial; background: #FFFFFF; }
-DIV#content TABLE			{ width:95%; }
-TR[bgcolor=silver] 			{ FONT: 9pt Arial; }
-BODY.banner					{ margin-top:0px; margin-bottom:0px; margin-left:5px; margin-right:5px; }
-INPUT 						{ background-color:#c0c0c0; color:#000000; font-weight:bold;}
-SELECT 						{ background-color:#c0c0c0; color:#000000; font-weight:bold;}
-TEXTAREA 					{ background-color:#c0c0c0; color:#000000; font-weight:bold;}
-INPUT[type=submit]			{ background-color:#c0c0c0;color:#20B000;font-weight:bold; }
-INPUT[type=reset]			{ background-color:#c0c0c0;color:#D90000; }
+FONT.owner                  { color:#006633; }
+FONT.noowner                { color:#000000; }
+TABLE.syslog                { FONT: 8pt Arial; background: #FFFFFF; }
+DIV#content TABLE           { width:95%; }
+TR[bgcolor=silver]          { FONT: 9pt Arial; }
+BODY.banner                     { margin-top:0px; margin-bottom:0px; margin-left:5px; margin-right:5px; }
+INPUT                       { background-color:#c0c0c0; color:#000000; font-weight:bold;}
+SELECT                      { background-color:#c0c0c0; color:#000000; font-weight:bold;}
+TEXTAREA                    { background-color:#c0c0c0; color:#000000; font-weight:bold;}
+INPUT[type=submit]          { background-color:#c0c0c0;color:#20B000;font-weight:bold; }
+INPUT[type=reset]           { background-color:#c0c0c0;color:#D90000; }
 
-DIV#flash		{
-	background-color: red;
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	text-align: left;
-	font-family: Tahoma, Arial, Sans-Serif;
-	font-size: 10pt;
-	color: #FFFFFF;
-	}
-	
-.hide	{ display:none; }
+DIV#flash       {
+    background-color: red;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: left;
+    font-family: Tahoma, Arial, Sans-Serif;
+    font-size: 10pt;
+    color: #FFFFFF;
+    }
+    
+.hide   { display:none; }
 
-UL#navi	{
-	font-size: 0.91em;
-	float: left; width: 22em;
-	margin: 0; padding: 0;
-	border: 1px dashed silver;
-	}
-UL#navi li	{
-	list-style: none;
-	margin: 0;
-	padding: 0.5em;
-	}
-UL#navi a	{
-	display: block;
-	padding: 0.2em;
-	font-weight: bold;
-	}
-UL#navi a:link	{
-	color: black; background-color: #eee;
+UL#navi     {
+    font-size: 0.91em;
+    float: left; width: 22em;
+    margin: 0; padding: 0;
+    border: 1px dashed silver;
+    }
+UL#navi li  {
+    list-style: none;
+    margin: 0;
+    padding: 0.5em;
+    }
+UL#navi a   {
+    display: block;
+    padding: 0.2em;
+    font-weight: bold;
+    }
+UL#navi a:link  {
+    color: black; background-color: #eee;
 }
 UL#navi a:visited {
-	color: #666; background-color: #eee;
+    color: #666; background-color: #eee;
 }
 UL#navi a:hover {
-	color: black; background-color: white;
+    color: black; background-color: white;
 }
 UL#navi a:active {
-	color: white; background-color: gray;
+    color: white; background-color: gray;
 }
 
 h1 {
@@ -92,98 +92,98 @@ p {
   margin: 1em 0;
 }
 table {
-	empty-cells: show;
-	border-width: 1px;
-	border-style: dotted;
-	border-color:#000000;
-	width: 100%;
+    empty-cells: show;
+    border-width: 1px;
+    border-style: dotted;
+    border-color:#000000;
+    width: 100%;
 }
 th {
-	font-family: Arial, Sans-Serif;
-	font-size:9pt;
-	color:#000000;
-	border-width: 1px;
-	border-style: dotted;
-	border-color:#000000;
-	background-color: #eee;
+    font-family: Arial, Sans-Serif;
+    font-size:9pt;
+    color:#000000;
+    border-width: 1px;
+    border-style: dotted;
+    border-color:#000000;
+    background-color: #eee;
 }
 td {
-	font-family: Arial, Sans-Serif;
-	font-size:9pt;
-	color:#000000;
-	border-width: 1px;
-	border-style: dotted;
-	border-color:#000000;
+    font-family: Arial, Sans-Serif;
+    font-size:9pt;
+    color:#000000;
+    border-width: 1px;
+    border-style: dotted;
+    border-color:#000000;
 }
 td.hidden {
-	font-family: Arial, Sans-Serif;
-	font-size:9pt;
-	border-width: 1px;
-	border-style: dotted;
-	border-color:#000000;
-	background-color:#FFFFFF;
-	color:#FFFFFF;
+    font-family: Arial, Sans-Serif;
+    font-size:9pt;
+    border-width: 1px;
+    border-style: dotted;
+    border-color:#000000;
+    background-color:#FFFFFF;
+    color:#FFFFFF;
 }
 
 tr.disabled td {
-	background-color: #ccc;
+    background-color: #ccc;
 }
 
 DIV#customer table {
-	width: 20%;
+    width: 20%;
 }
 
 DIV#welcome table {
-	empty-cells: hide;
-	border-width: 0px;
-	border-color: #FFFFFF;
-	width: 100%;
+    empty-cells: hide;
+    border-width: 0px;
+    border-color: #FFFFFF;
+    width: 100%;
 }
 DIV#welcome td {
-	font-family: Arial, Sans-Serif;
-	font-size:9pt;
-	color:#000000;
-	border-width: 0px;
-	border-style: dashed;
-	border-color:#FFFFFF;
-	background-color:#CCCCCC;
+    font-family: Arial, Sans-Serif;
+    font-size:9pt;
+    color:#000000;
+    border-width: 0px;
+    border-style: dashed;
+    border-color:#FFFFFF;
+    background-color:#CCCCCC;
 }
 DIV#welcome td.empty {
-	background-color:#FFFFFF;
+    background-color:#FFFFFF;
 }
 DIV#box table {
-	empty-cells: show;
-	border-width: 0px;
-	border-style: dashed;
-	border-color: #FFFFFF;
-	background-color: #CCCCCC;
-	width: 100%;
+    empty-cells: show;
+    border-width: 0px;
+    border-style: dashed;
+    border-color: #FFFFFF;
+    background-color: #CCCCCC;
+    width: 100%;
 }
 DIV#box td {
-	font-family: Arial, Sans-Serif;
-	font-size:9pt;
-	color:#000000;
-	border-width: 0px;
-	border-style: dashed;
-	border-color:#FFFFFF;
+    font-family: Arial, Sans-Serif;
+    font-size:9pt;
+    color:#000000;
+    border-width: 0px;
+    border-style: dashed;
+    border-color:#FFFFFF;
 }
 
 DIV#footer {
-	margin-top: 2em;
-	margin-left: 28.3em;
-	padding: 0 1em;
-	border: 1px dashed silver;
-	min-width: 16em;
-	font-family: Arial, Sans-Serif;
-	font-size: 7pt;
-	color:#000000;
+    margin-top: 2em;
+    margin-left: 28.3em;
+    padding: 0 1em;
+    border: 1px dashed silver;
+    min-width: 16em;
+    font-family: Arial, Sans-Serif;
+    font-size: 7pt;
+    color:#000000;
 }
 
 DIV#content1 {
-	margin-left: 22em;
-	padding: 0 1em;
-	border: 1px dashed silver;
-	min-width: 16em;
+    margin-left: 22em;
+    padding: 0 1em;
+    border: 1px dashed silver;
+    min-width: 16em;
 }
 DIV#content1 h1 {
   font-size: 1.5em;
@@ -198,35 +198,35 @@ DIV#content1 p {
   margin: 1em 0;
 }
 DIV#content1 table {
-	empty-cells: show;
-	border-width: 1px;
-	border-style: dotted;
-	border-color:#000000;
-	width: 100%;
+    empty-cells: show;
+    border-width: 1px;
+    border-style: dotted;
+    border-color:#000000;
+    width: 100%;
 }
 DIV#content1 th {
-	font-family: Arial, Sans-Serif;
-	font-size:9pt;
-	color:#000000;
-	border-width: 1px;
-	border-style: dotted;
-	border-color:#000000;
-	background-color: #eee;
+    font-family: Arial, Sans-Serif;
+    font-size:9pt;
+    color:#000000;
+    border-width: 1px;
+    border-style: dotted;
+    border-color:#000000;
+    background-color: #eee;
 }
 DIV#content1 td {
-	font-family: Arial, Sans-Serif;
-	font-size:9pt;
-	color:#000000;
-	border-width: 1px;
-	border-style: dotted;
-	border-color:#000000;
+    font-family: Arial, Sans-Serif;
+    font-size:9pt;
+    color:#000000;
+    border-width: 1px;
+    border-style: dotted;
+    border-color:#000000;
 }
 DIV#content1 td.hidden {
-	font-family: Arial, Sans-Serif;
-	font-size:9pt;
-	border-width: 1px;
-	border-style: dotted;
-	border-color:#000000;
-	background-color:#FFFFFF;
-	color:#FFFFFF;
+    font-family: Arial, Sans-Serif;
+    font-size:9pt;
+    border-width: 1px;
+    border-style: dotted;
+    border-color:#000000;
+    background-color:#FFFFFF;
+    color:#FFFFFF;
 }

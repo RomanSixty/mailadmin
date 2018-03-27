@@ -16,7 +16,7 @@ validate_session();
 <body class="nav" text="#000000" link="#0000A0" vlink="#0000A0" alink="#0000A0">
 <div class="nav">
     <a href="accounts/list.php" target="detail">Mail Accounts</a><br />
-<?php if ( $_SESSION [ 'admin' ] ) { ?>
+<?php if ($_SESSION [ 'admin' ]) { ?>
     <a href="domains/list.php" target="detail">Domains</a><br />
     <a href="hosts/list.php" target="detail">Admins</a><br />
 <?php } ?>
